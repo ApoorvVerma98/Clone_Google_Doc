@@ -1,94 +1,104 @@
-import { BiBold, BiItalic, BiUnderline } from "react-icons/bi";
+import { BiItalic, BiUndo, BiRedo } from "react-icons/bi";
 import { AiOutlineStrikethrough, AiFillPrinter } from "react-icons/ai";
-import {MdSpellcheck,MdImagesearchRoller,MdFormatAlignCenter,MdFormatAlignJustify,
-MdFormatAlignLeft,MdFormatAlignRight,MdRedo,MdUndo} from "react-icons/md";
+import {
+  MdSpellcheck,
+  MdImagesearchRoller,
+  MdFormatAlignCenter,
+  MdFormatAlignJustify,
+  MdFormatAlignLeft,
+  MdFormatAlignRight,
+} from "react-icons/md";
 import { FaRemoveFormat } from "react-icons/fa";
-import { RiSubscript, RiSuperscript } from "react-icons/ri";
+import { RiSubscript, RiSuperscript, RiUnderline } from "react-icons/ri";
 import { GoListOrdered, GoListUnordered } from "react-icons/go";
-import { BsTextIndentLeft, BsTextIndentRight } from "react-icons/bs";
+import {
+  BsTextIndentLeft,
+  BsTypeBold,
+  BsTextIndentRight,
+} from "react-icons/bs";
 
 export const icons = [
   {
-    icon: <MdUndo />,
-    action: "undo"
+    icon: <BiUndo />,
+    action: "undo",
   },
   {
-    icon: <MdRedo />,
-    action: "redo"
+    icon: <BiRedo />,
+    action: "redo",
   },
   {
     icon: <AiFillPrinter />,
-    action: ""
+    action: "",
   },
   {
     icon: <MdSpellcheck />,
-    action: ""
+    action: "",
   },
   {
     icon: <MdImagesearchRoller />,
-    action: ""
+    action: "",
   },
   {
-    icon: <BiBold />,
-    action: "bold"
+    icon: <BsTypeBold />,
+    action: "bold",
   },
   {
     icon: <BiItalic />,
-    action: "italic"
+    action: "italic",
   },
   {
-    icon: <BiUnderline />,
-    action: "underline"
+    icon: <RiUnderline />,
+    action: "underline",
   },
   {
     icon: <AiOutlineStrikethrough />,
-    action: "strikethrough"
+    action: "strikethrough",
   },
   {
     icon: <MdFormatAlignLeft />,
-    action: "justifyLeft"
+    action: "justifyLeft",
   },
   {
     icon: <MdFormatAlignCenter />,
-    action: "justifyCenter"
+    action: "justifyCenter",
   },
   {
     icon: <MdFormatAlignRight />,
-    action: "justifyRight"
+    action: "justifyRight",
   },
   {
     icon: <MdFormatAlignJustify />,
-    action: "justifyFull"
+    action: "justifyFull",
   },
   {
     icon: <GoListOrdered />,
-    action: "insertOrderedList"
+    action: "insertOrderedList",
   },
   {
     icon: <GoListUnordered />,
-    action: "insertUnorderedList"
+    action: "insertUnorderedList",
   },
   {
     icon: <RiSuperscript />,
-    action: "superscript"
+    action: "superscript",
   },
-  
+
   {
     icon: <RiSubscript />,
-    action: "subscript"
+    action: "subscript",
   },
   {
     icon: <BsTextIndentLeft />,
-    action: "indent"
+    action: "indent",
   },
   {
     icon: <BsTextIndentRight />,
-    action: "outdent"
+    action: "outdent",
   },
   {
     icon: <FaRemoveFormat />,
-    action: "removeFormat"
-  }
+    action: "removeFormat",
+  },
 ];
 
 export const fontSizeList = [1, 2, 3, 4, 5, 6, 7];
@@ -106,28 +116,28 @@ export const fontFamilyList = [
   "ui-rounded",
   "emoji",
   "math",
-  "fangsong"
+  "fangsong",
 ];
 
 export const headingList = ["H1", "H2", "H3", "H4", "H5", "H6"];
 
 export const emojiList = [
   {
-    icon : "Smile",
-    value : "&#128514",
-  } ,
+    icon: "Smile",
+    value: "&#128514",
+  },
   {
-    icon : "Thumb-Up",
-    value : "&#128514",
-  } ,
+    icon: "Thumb-Up",
+    value: "&#128514",
+  },
   {
-    icon : "Thumb-Down",
-    value : "&#128514",
-  } ,
+    icon: "Thumb-Down",
+    value: "&#128514",
+  },
   {
-    icon : "Kiss",
-    value : "&#128536",
-  } ,
+    icon: "Kiss",
+    value: "&#128536",
+  },
 ];
 
-export const zoomList = ["25%","50%","75%", "100%", "150%", "200%"]
+export const zoomList = ["25%", "50%", "75%", "100%", "150%", "200%"];

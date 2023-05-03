@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { AiFillPrinter, AiOutlineHighlight } from "react-icons/ai";
-import { BsLink } from "react-icons/bs";
-import { ImFontSize, ImTextColor } from "react-icons/im";
+import { AiOutlinePrinter, AiOutlineFontSize  } from "react-icons/ai";
+import { RiMarkPenFill  } from "react-icons/ri";
+import { FiLink2 } from "react-icons/fi";
+import { ImTextColor } from "react-icons/im";
 import {icons,fontSizeList,fontFamilyList,emojiList,zoomList,} from "../component/Icons";
 import style from "./ToolBar.module.css";
 import { RxImage } from "react-icons/rx";
@@ -96,7 +97,7 @@ export default function ToolBar ({ printDiv }) {
         ))}
 
         <button onClick={handlePrint}>
-          <AiFillPrinter />
+          <AiOutlinePrinter />
         </button>
         {icons.slice(3, 5).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
@@ -141,7 +142,7 @@ export default function ToolBar ({ printDiv }) {
         <div className={style.fontSize}>
           <label htmlFor="fontSize">
             <span>
-              <ImFontSize className={style.icon} />
+              <AiOutlineFontSize className={style.icon} />
             </span>
           </label>
           <select id="fontSize" onChange={handleFontSize}>
@@ -173,7 +174,7 @@ export default function ToolBar ({ printDiv }) {
 
         <button>
           <label htmlFor="highlighColor">
-            <AiOutlineHighlight style={{ zIndex: "1", color: higlightColor }} />
+            <RiMarkPenFill style={{ zIndex: "1", color: higlightColor }} />
           </label>
           <input
             className={style.input}
@@ -186,7 +187,7 @@ export default function ToolBar ({ printDiv }) {
 
         <button onClick={() => handleOpen("link")}>
           <label htmlFor="link">
-            <BsLink />
+            <FiLink2 />
           </label>
         </button>
         <button onClick={() => handleOpen("insertImage")}>
