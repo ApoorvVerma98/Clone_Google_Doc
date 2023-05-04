@@ -1,20 +1,13 @@
 import React from "react";
 import { HiDownload } from "react-icons/hi";
 import style from "./TextArea.module.css";
-
+import jsPDF from "jspdf";
 export default function TextArea() {
-
   function handleDownloadDoc() {
-    const content = document.getElementById("content").innerHTML;
-    const blob = new Blob([content], { type: "text/pdf" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "document.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    const content = document.getElementById("content").innerHTML.trim();
+    const doc = new jsPDF();
+    doc.text(content, 10, 10);
+    doc.save("document.pdf");
   }
 
   return (
@@ -27,6 +20,6 @@ export default function TextArea() {
       <div onClick={handleDownloadDoc} className={style.downloaddoc}>
         <HiDownload />
       </div>
-    </div>
-  );
+    </div>
+  );
 }

@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -28,7 +29,7 @@
     outline: none;
   }
   
-  .downloaddoc {
+  /* .downloaddoc {
     background-color: rgb(62, 35, 216);
     display: flex;
     justify-content: center;
@@ -49,4 +50,41 @@
     background-color: red;
     color: #000;
   }
+   */
+
+   .downloaddoc {
+    position: fixed;
+    bottom: 6vh;
+    right: 5vw;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #0B5BD5, #0067C5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .downloaddoc:hover {
+    cursor: pointer;
+    background: linear-gradient(to right, #FF4F4F, #FF8C1A);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+  }
+  
+  .downloaddoc i {
+    font-size: 2.5rem;
+    color: white;
+  }
+  
+  @keyframes pulse {
+      50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  } 
   
