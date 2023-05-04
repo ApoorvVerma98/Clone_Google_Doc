@@ -1,0 +1,57 @@
+.list{
+    display: flex;
+    margin-top: 2rem;
+    margin-left: 2rem;
+}
+.docimg{
+    width: 2rem;
+    margin-top: 1.5rem;
+    margin-right:95%;
+}
+.mainhead{
+    margin-top: -4%;
+margin-left: 5%;
+    font-size: 1.5rem;
+    width: 15%;
+}
+.mainimg{
+    margin-top: -3.6%;
+    font-size: 1.6rem;
+    margin-right:54% ;
+cursor: pointer;
+
+}
+.star:hover{
+    background-color: rgb(230, 219, 219);
+}
+.drive:hover{
+    background-color: rgb(230, 219, 219);
+}
+
+.drive{
+margin-left: 3%;
+}
+.star{
+    margin-left: 6%;
+    }
+    
+    .list{
+        list-style-type: none;
+       gap: 2rem;
+       margin-top: 0.1rem;
+       cursor: pointer;
+       font-weight: 500;
+    }
+    .file{
+        margin-top: -0.4rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        cursor: pointer;
+       
+    }
+    .lis:hover{
+        background-color:  rgb(230, 219, 219);
+    }
+    .file:hover{
+        background-color:  rgb(230, 219, 219);
+    }
