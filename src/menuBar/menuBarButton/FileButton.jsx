@@ -78,6 +78,8 @@ export default function File() {
            <p>  < AddToDriveIcon  style={{marginBottom:"-5px" }}/>    <span style={{marginLeft:"7px" ,color:"black", }} >Add Shortcut to Drive</span>   </p>
            <p>  < DeleteOutlineIcon style={{marginBottom:"-5px" }}/>    <span style={{marginLeft:"7px" , color:"black" }} >Move to trash</span>   </p>
           {/* <p>fsdfsdf</p> */}
+          {/* <p>fsdfsdf</p> */}
+
            <hr />
            <p>  <  HistoryIcon style={{marginBottom:"-5px" }}/>    <span style={{marginLeft:"7px" , color:"black" }} >Version History</span>   </p>
            <p>  < OfflinePinIcon   style={{marginBottom:"-5px" }}/>    <span style={{marginLeft:"7px" ,color:"black", }} >Make available offline</span>   </p>
