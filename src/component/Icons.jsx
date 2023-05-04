@@ -1,13 +1,8 @@
-import { BiItalic, BiUndo, BiRedo } from "react-icons/bi";
-import { AiOutlineStrikethrough, AiFillPrinter } from "react-icons/ai";
-import {
-  MdSpellcheck,
-  MdImagesearchRoller,
-  MdFormatAlignCenter,
-  MdFormatAlignJustify,
-  MdFormatAlignLeft,
-  MdFormatAlignRight,
-} from "react-icons/md";
+import {  BiUndo, BiRedo } from "react-icons/bi";
+import { RxFontItalic } from "react-icons/rx"
+import { AiOutlineStrikethrough, AiOutlinePrinter } from "react-icons/ai";
+import { MdSpellcheck, MdImagesearchRoller, MdFormatAlignCenter, MdFormatAlignJustify,
+MdFormatAlignLeft, MdFormatAlignRight, } from "react-icons/md";
 import { FaRemoveFormat } from "react-icons/fa";
 import { RiSubscript, RiSuperscript, RiUnderline } from "react-icons/ri";
 import { GoListOrdered, GoListUnordered } from "react-icons/go";
@@ -27,7 +22,7 @@ export const icons = [
     action: "redo",
   },
   {
-    icon: <AiFillPrinter />,
+    icon: <AiOutlinePrinter />,
     action: "",
   },
   {
@@ -43,7 +38,7 @@ export const icons = [
     action: "bold",
   },
   {
-    icon: <BiItalic />,
+    icon: <RxFontItalic />,
     action: "italic",
   },
   {
@@ -101,7 +96,7 @@ export const icons = [
   },
 ];
 
-export const fontSizeList = [1, 2, 3, 4, 5, 6, 7];
+export const fontSizeList = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 , 10 ];
 
 export const fontFamilyList = [
   "serif",
@@ -111,12 +106,13 @@ export const fontFamilyList = [
   "fantasy",
   "system-ui",
   "ui-serif",
-  "ui-sans-serif",
+  "Roboto",
   "ui-monospace",
-  "ui-rounded",
+  "Montserrat",
   "emoji",
   "math",
   "fangsong",
+  "Raleway",
 ];
 
 export const headingList = ["H1", "H2", "H3", "H4", "H5", "H6"];

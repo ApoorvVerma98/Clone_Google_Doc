@@ -12,7 +12,7 @@ export default function ToolBar({ printDiv }) {
   const [ fontSize, setFontSize ] = useState("Font Size");
   const [ fontName, setFontName ] = useState("Font Style");
   const [ color, setColor ] = useState("#000000");
-  const [ higlightColor, setHiglightColor ] = useState("#000000");
+  const [ highlightColor, setHighlightColor ] = useState("#000000");
   const [ link, setLink ] = useState("");
   const [ show, setShow ] = useState(false);
 
@@ -29,7 +29,7 @@ export default function ToolBar({ printDiv }) {
     document.execCommand("fontSize", false, e.target.value);
   }
   function handleHighlightColor(e) {
-    setHiglightColor(e.target.value);
+    setHighlightColor(e.target.value);
     document.execCommand("backColor", false, e.target.value);
   }
   function handleFontStyle(e) {
@@ -96,7 +96,7 @@ export default function ToolBar({ printDiv }) {
         ))}
 
         <button onClick={handlePrint}>
-          <AiFillPrinter />
+          <AiOutlinePrinter />
         </button>
         {icons.slice(3, 5).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
@@ -172,14 +172,14 @@ export default function ToolBar({ printDiv }) {
         </button>
 
         <button>
-          <label htmlFor="highlighColor">
-            <AiOutlineHighlight style={{ zIndex: "1", color: higlightColor }} />
+          <label htmlFor="highlightColor">
+            <AiOutlineHighlight style={{ zIndex: "1", color: highlightColor }} />
           </label>
           <input
             className={style.input}
-            id="highlighColor"
+            id="highlightColor"
             type="color"
-            value={higlightColor}
+            value={highlightColor}
             onChange={handleHighlightColor}
           />
         </button>

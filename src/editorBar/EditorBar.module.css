@@ -1,16 +1,17 @@
 .wrapper {
   height: 6vh;
-  border: 1px solid rgb(207, 207, 207);
+  border: 1px solid #EDF2FA;
   display: flex;
   justify-content: center;
+  padding: -10.5rem;
   align-items: center;
   gap: 0.3rem;
-  background-color: white;
+  background-color: #EDF2FA;
 }
 
 .wrapper button {
   border: none;
-  background-color: white;
+  background-color: #EDF2FA;
   font-size: 1.2rem;
   color: rgb(92, 92, 92);
   display: flex;
@@ -23,7 +24,7 @@
 }
 
 .wrapper button:hover {
-  background-color: rgba(210, 207, 207, 0.5);
+  background-color: #DFE5EB;
 }
 .icon {
   font-size: 1.3rem;
@@ -31,7 +32,7 @@
 }
 .fontSize {
   border: none;
-  background-color: white;
+  background-color: #EDF2FA;
   font-size: 1.3rem;
   gap: 0.1rem;
   display: flex;
@@ -57,7 +58,7 @@
   background-color: rgba(210, 207, 207, 0.2);
 }
 .linkBox {
-  position: absolute;
+  position: center;
   border: 1px solid rgb(169, 169, 169);
   width: 20%;
   height: 30vh;
