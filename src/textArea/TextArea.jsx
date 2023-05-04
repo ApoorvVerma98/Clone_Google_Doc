@@ -1,29 +1,54 @@
-import React from "react";
-import { HiDownload } from "react-icons/hi";
+import React, { useState, useRef } from "react";
+import EditorBar from "../editorBar/EditorBar"
 import style from "./TextArea.module.css";
+import { HiDownload } from "react-icons/hi";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
-export default function TextArea() {
-  function handleDownloadDoc() {
-    const content = document.getElementById("content").innerHTML;
-    const blob = new Blob([content], { type: "text/pdf" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "document.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+
+
+export default function HomePage() {
+  const [title, setTitle] = useState("Untitled Document");
+  const printDiv = useRef();
+
+ 
+  async function handleDownload() {
+    const sheetContent = document.getElementById(`printablediv`);
+    const canvas = await html2canvas(sheetContent, { dpi: 300 });
+    const imageData = canvas.toDataURL("image/png", 1.0);
+    const pdfDoc = new jsPDF({
+      orientation: "portrait",
+      unit: "mm",
+      format: "a4",
+      compress: false,
+    });
+    pdfDoc.addImage(imageData, "PNG", 0, 0, 210, 297, "", "FAST");
+    pdfDoc.save(`${title}.pdf`);
   }
+  
+  
 
   return (
     <div>
       <div className={style.main}>
+        
+         <div className={style.navbar}>
+        <EditorBar printDiv={printDiv}/>
         <div className={style.wrapper}>
-          <div id="content" className={style.textArea} contentEditable="true" />
+          <div
+            ref={printDiv}
+            id="printablediv"
+            className={style.textArea}
+            contentEditable="true"
+          />
         </div>
+        </div>
+        {/* <div className={style.navbarResponsive}>
+        <EditorBarResponsive printDiv={printDiv}/>
+        </div> */}
+        
       </div>
-      <div onClick={handleDownloadDoc} className={style.downloaddoc}>
+      <div onClick={handleDownload} className={style.download}>
         <HiDownload />
       </div>
     </div>

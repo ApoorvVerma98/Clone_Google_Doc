@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { AiOutlinePrinter, AiOutlineFontSize } from "react-icons/ai";
-import { RiMarkPenFill } from "react-icons/ri";
-import { FiLink2 } from "react-icons/fi";
-import { ImTextColor } from "react-icons/im";
+import { AiFillPrinter, AiOutlineHighlight } from "react-icons/ai";
+import { BsLink } from "react-icons/bs";
+import { ImFontSize, ImTextColor } from "react-icons/im";
 import {
   icons,
   fontSizeList,
@@ -10,7 +9,7 @@ import {
   emojiList,
   zoomList,
 } from "../component/Icons";
-import style from "./ToolBar.module.css";
+import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
 export default function ToolBar({ printDiv }) {
@@ -24,110 +23,64 @@ export default function ToolBar({ printDiv }) {
   const [show, setShow] = useState(false);
 
   function handleAction(element) {
-    if (element.action === "bold") {
-      document.execCommand("bold");
-    } else if (element.action === "italic") {
-      document.execCommand("italic");
-    } else if (element.action === "underline") {
-      document.execCommand("underline");
-    }
+    document.execCommand(`${element.action}`);
   }
-
   function handleFontColor(e) {
     setColor(e.target.value);
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const span = document.createElement("span");
-      span.style.color = e.target.value;
-      range.surroundContents(span);
-    }
+    console.log(e.target.value);
+    document.execCommand("foreColor", false, e.target.value);
   }
-
   function handleFontSize(e) {
     setFontSize(e.target.value);
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const span = document.createElement("span");
-      span.style.fontSize = e.target.value;
-      range.surroundContents(span);
-    }
+    document.execCommand("fontSize", false, e.target.value);
   }
-
   function handleHighlightColor(e) {
     setHiglightColor(e.target.value);
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const span = document.createElement("span");
-      span.style.backgroundColor = e.target.value;
-      range.surroundContents(span);
-    }
+    document.execCommand("backColor", false, e.target.value);
   }
-
   function handleFontStyle(e) {
     setFontName(e.target.value);
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const span = document.createElement("span");
-      span.style.fontFamily = e.target.value;
-      range.surroundContents(span);
-    }
+    document.execCommand("fontName", false, e.target.value);
+    console.log(e.target.value);
   }
-
   function handleEmoji(e) {
     setEmoji(e.target.value);
 
-    let emojiHTML;
     if (e.target.value === "Smile") {
-      emojiHTML = "&#128514;";
+      document.execCommand("insertHTML", false, "&#128514");
     } else if (e.target.value === "Thumbs Up") {
-      emojiHTML = "&#128077;";
+      document.execCommand("insertHTML", false, "&#128077");
     } else if (e.target.value === "Thumbs Down") {
-      emojiHTML = "&#128078;";
+      document.execCommand("insertHTML", false, "&#128078");
     }
-
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const span = document.createElement("span");
-      span.innerHTML = emojiHTML;
-      range.surroundContents(span);
-    }
+    console.log(e.target.value);
   }
 
   function handleScale(e) {
     setScaleSize(e.target.value);
-    const scale = Number(e.target.value.replace("%", "")) / 100;
-    printDiv.current.style.transform = `scale(${scale}, ${scale})`;
+    if (e.target.value === "100%") {
+      printDiv.current.style.transform = "scale(1,1)";
+    } else if (e.target.value === "150%") {
+      printDiv.current.style.transform = "scale(1.5,1)";
+    } else if (e.target.value === "200%") {
+      printDiv.current.style.transform = "scale(2,1)";
+    } else if (e.target.value === "50%") {
+      printDiv.current.style.transform = "scale(0.65,0.65)";
+    } else if (e.target.value === "25%") {
+      printDiv.current.style.transform = "scale(0.5,0.5)";
+    } else if (e.target.value === "75%") {
+      printDiv.current.style.transform = "scale(0.8,1)";
+    }
   }
 
   function handleOpen(value) {
-    setShow(!show);
+    setShow(!show ? true : false);
     if (value === "link") {
-      const link = prompt("Enter the URL:");
-      if (link) {
-        const selection = window.getSelection();
-        if (selection.rangeCount > 0) {
-          const range = selection.getRangeAt(0);
-          const linkNode = document.createElement("a");
-          linkNode.href = link;
-          linkNode.textContent = selection.toString();
-          range.deleteContents();
-          range.insertNode(linkNode);
-        }
-      }
+      document.execCommand("createLink", false, link);
     } else {
-      const image = prompt("Enter the image URL:");
-      if (image) {
-        const imgNode = document.createElement("img");
-        imgNode.src = image;
-        imgNode.alt = "Image";
-        printDiv.current.appendChild(imgNode);
-      }
+      document.execCommand("insertImage", false, link);
     }
+    setLink("");
   }
 
   const handlePrint = () => {
@@ -149,7 +102,7 @@ export default function ToolBar({ printDiv }) {
         ))}
 
         <button onClick={handlePrint}>
-          <AiOutlinePrinter />
+          <AiFillPrinter />
         </button>
         {icons.slice(3, 5).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
@@ -194,7 +147,7 @@ export default function ToolBar({ printDiv }) {
         <div className={style.fontSize}>
           <label htmlFor="fontSize">
             <span>
-              <AiOutlineFontSize className={style.icon} />
+              <ImFontSize className={style.icon} />
             </span>
           </label>
           <select id="fontSize" onChange={handleFontSize}>
@@ -226,7 +179,7 @@ export default function ToolBar({ printDiv }) {
 
         <button>
           <label htmlFor="highlighColor">
-            <RiMarkPenFill style={{ zIndex: "1", color: higlightColor }} />
+            <AiOutlineHighlight style={{ zIndex: "1", color: higlightColor }} />
           </label>
           <input
             className={style.input}
@@ -239,7 +192,7 @@ export default function ToolBar({ printDiv }) {
 
         <button onClick={() => handleOpen("link")}>
           <label htmlFor="link">
-            <FiLink2 />
+            <BsLink />
           </label>
         </button>
         <button onClick={() => handleOpen("insertImage")}>
