@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { AiOutlinePrinter, AiOutlineFontSize  } from "react-icons/ai";
-import { RiMarkPenFill  } from "react-icons/ri";
+import { AiOutlinePrinter, AiOutlineFontSize } from "react-icons/ai";
+import { RiMarkPenFill } from "react-icons/ri";
 import { FiLink2 } from "react-icons/fi";
 import { ImTextColor } from "react-icons/im";
-import {icons,fontSizeList,fontFamilyList,emojiList,zoomList,} from "../component/Icons";
+import {
+  icons,
+  fontSizeList,
+  fontFamilyList,
+  emojiList,
+  zoomList,
+} from "../component/Icons";
 import style from "./ToolBar.module.css";
 import { RxImage } from "react-icons/rx";
 
-export default function ToolBar ({ printDiv }) {
+export default function ToolBar({ printDiv }) {
   const [emoji, setEmoji] = useState("&#128514;");
   const [scaleSize, setScaleSize] = useState("100%");
   const [fontSize, setFontSize] = useState("Font Size");
@@ -18,95 +24,95 @@ export default function ToolBar ({ printDiv }) {
   const [show, setShow] = useState(false);
 
   function handleAction(element) {
-    if (element.action === 'bold') {
-      document.execCommand('bold');
-    } else if (element.action === 'italic') {
-      document.execCommand('italic');
-    } else if (element.action === 'underline') {
-      document.execCommand('underline');
+    if (element.action === "bold") {
+      document.execCommand("bold");
+    } else if (element.action === "italic") {
+      document.execCommand("italic");
+    } else if (element.action === "underline") {
+      document.execCommand("underline");
     }
   }
-  
+
   function handleFontColor(e) {
     setColor(e.target.value);
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
-      const span = document.createElement('span');
+      const span = document.createElement("span");
       span.style.color = e.target.value;
       range.surroundContents(span);
     }
   }
-  
+
   function handleFontSize(e) {
     setFontSize(e.target.value);
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
-      const span = document.createElement('span');
+      const span = document.createElement("span");
       span.style.fontSize = e.target.value;
       range.surroundContents(span);
     }
   }
-  
+
   function handleHighlightColor(e) {
     setHiglightColor(e.target.value);
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
-      const span = document.createElement('span');
+      const span = document.createElement("span");
       span.style.backgroundColor = e.target.value;
       range.surroundContents(span);
     }
   }
-  
+
   function handleFontStyle(e) {
     setFontName(e.target.value);
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
-      const span = document.createElement('span');
+      const span = document.createElement("span");
       span.style.fontFamily = e.target.value;
       range.surroundContents(span);
     }
   }
-  
+
   function handleEmoji(e) {
     setEmoji(e.target.value);
-  
+
     let emojiHTML;
-    if (e.target.value === 'Smile') {
-      emojiHTML = '&#128514;';
-    } else if (e.target.value === 'Thumbs Up') {
-      emojiHTML = '&#128077;';
-    } else if (e.target.value === 'Thumbs Down') {
-      emojiHTML = '&#128078;';
+    if (e.target.value === "Smile") {
+      emojiHTML = "&#128514;";
+    } else if (e.target.value === "Thumbs Up") {
+      emojiHTML = "&#128077;";
+    } else if (e.target.value === "Thumbs Down") {
+      emojiHTML = "&#128078;";
     }
-  
+
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
-      const span = document.createElement('span');
+      const span = document.createElement("span");
       span.innerHTML = emojiHTML;
       range.surroundContents(span);
     }
   }
-  
+
   function handleScale(e) {
     setScaleSize(e.target.value);
-    const scale = Number(e.target.value.replace('%', '')) / 100;
+    const scale = Number(e.target.value.replace("%", "")) / 100;
     printDiv.current.style.transform = `scale(${scale}, ${scale})`;
   }
-  
+
   function handleOpen(value) {
     setShow(!show);
-    if (value === 'link') {
-      const link = prompt('Enter the URL:');
+    if (value === "link") {
+      const link = prompt("Enter the URL:");
       if (link) {
         const selection = window.getSelection();
         if (selection.rangeCount > 0) {
           const range = selection.getRangeAt(0);
-          const linkNode = document.createElement('a');
+          const linkNode = document.createElement("a");
           linkNode.href = link;
           linkNode.textContent = selection.toString();
           range.deleteContents();
@@ -114,11 +120,11 @@ export default function ToolBar ({ printDiv }) {
         }
       }
     } else {
-      const image = prompt('Enter the image URL:');
+      const image = prompt("Enter the image URL:");
       if (image) {
-        const imgNode = document.createElement('img');
+        const imgNode = document.createElement("img");
         imgNode.src = image;
-        imgNode.alt = 'Image';
+        imgNode.alt = "Image";
         printDiv.current.appendChild(imgNode);
       }
     }

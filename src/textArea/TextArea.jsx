@@ -3,7 +3,6 @@ import { HiDownload } from "react-icons/hi";
 import style from "./TextArea.module.css";
 
 export default function TextArea() {
-
   function handleDownloadDoc() {
     const content = document.getElementById("content").innerHTML;
     const blob = new Blob([content], { type: "text/pdf" });
@@ -27,6 +26,6 @@ export default function TextArea() {
       <div onClick={handleDownloadDoc} className={style.downloaddoc}>
         <HiDownload />
       </div>
-    </div>
-  );
+    </div>
+  );
 }
