@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import EditorBar from "../editorBar/EditorBar"
+import ToolBar from "../editorBar/EditorBar"
 import style from "./TextArea.module.css";
 import { HiDownload } from "react-icons/hi";
 import jsPDF from "jspdf";
@@ -32,7 +32,7 @@ export default function HomePage() {
       <div className={style.main}>
        
          <div className={style.navbar}>
-        <EditorBar printDiv={printDiv}/>
+        <ToolBar printDiv={printDiv}/>
         <div className={style.wrapper}>
           <div
             ref={printDiv}
