@@ -6,7 +6,6 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 
-
 export default function HomePage() {
   const [title, setTitle] = useState("Untitled Document");
   const printDiv = useRef();
@@ -31,7 +30,7 @@ export default function HomePage() {
   return (
     <div>
       <div className={style.main}>
-        
+       
          <div className={style.navbar}>
         <EditorBar printDiv={printDiv}/>
         <div className={style.wrapper}>
@@ -43,10 +42,6 @@ export default function HomePage() {
           />
         </div>
         </div>
-        {/* <div className={style.navbarResponsive}>
-        <EditorBarResponsive printDiv={printDiv}/>
-        </div> */}
-        
       </div>
       <div onClick={handleDownload} className={style.download}>
         <HiDownload />
