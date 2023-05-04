@@ -18,64 +18,110 @@ export default function ToolBar ({ printDiv }) {
   const [show, setShow] = useState(false);
 
   function handleAction(element) {
-    document.execCommand(`${element.action}`);
+    if (element.action === 'bold') {
+      document.execCommand('bold');
+    } else if (element.action === 'italic') {
+      document.execCommand('italic');
+    } else if (element.action === 'underline') {
+      document.execCommand('underline');
+    }
   }
+  
   function handleFontColor(e) {
     setColor(e.target.value);
-    console.log(e.target.value);
-    document.execCommand("foreColor", false, e.target.value);
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const span = document.createElement('span');
+      span.style.color = e.target.value;
+      range.surroundContents(span);
+    }
   }
+  
   function handleFontSize(e) {
     setFontSize(e.target.value);
-    document.execCommand("fontSize", false, e.target.value);
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const span = document.createElement('span');
+      span.style.fontSize = e.target.value;
+      range.surroundContents(span);
+    }
   }
+  
   function handleHighlightColor(e) {
     setHiglightColor(e.target.value);
-    document.execCommand("backColor", false, e.target.value);
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const span = document.createElement('span');
+      span.style.backgroundColor = e.target.value;
+      range.surroundContents(span);
+    }
   }
+  
   function handleFontStyle(e) {
     setFontName(e.target.value);
-    document.execCommand("fontName", false, e.target.value);
-    console.log(e.target.value);
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const span = document.createElement('span');
+      span.style.fontFamily = e.target.value;
+      range.surroundContents(span);
+    }
   }
+  
   function handleEmoji(e) {
     setEmoji(e.target.value);
-
-    if (e.target.value === "Smile") {
-      document.execCommand("insertHTML", false, "&#128514");
-    } else if (e.target.value === "Thumbs Up") {
-      document.execCommand("insertHTML", false, "&#128077");
-    } else if (e.target.value === "Thumbs Down") {
-      document.execCommand("insertHTML", false, "&#128078");
+  
+    let emojiHTML;
+    if (e.target.value === 'Smile') {
+      emojiHTML = '&#128514;';
+    } else if (e.target.value === 'Thumbs Up') {
+      emojiHTML = '&#128077;';
+    } else if (e.target.value === 'Thumbs Down') {
+      emojiHTML = '&#128078;';
     }
-    console.log(e.target.value);
+  
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const span = document.createElement('span');
+      span.innerHTML = emojiHTML;
+      range.surroundContents(span);
+    }
   }
-
+  
   function handleScale(e) {
     setScaleSize(e.target.value);
-    if (e.target.value === "100%") {
-      printDiv.current.style.transform = "scale(1,1)";
-    } else if (e.target.value === "150%") {
-      printDiv.current.style.transform = "scale(1.5,1)";
-    } else if (e.target.value === "200%") {
-      printDiv.current.style.transform = "scale(2,1)";
-    } else if (e.target.value === "50%") {
-      printDiv.current.style.transform = "scale(0.65,0.65)";
-    } else if (e.target.value === "25%") {
-      printDiv.current.style.transform = "scale(0.5,0.5)";
-    } else if (e.target.value === "75%") {
-      printDiv.current.style.transform = "scale(0.8,1)";
-    }
+    const scale = Number(e.target.value.replace('%', '')) / 100;
+    printDiv.current.style.transform = `scale(${scale}, ${scale})`;
   }
-
+  
   function handleOpen(value) {
-    setShow(!show ? true : false);
-    if (value === "link") {
-      document.execCommand("createLink", false, link);
+    setShow(!show);
+    if (value === 'link') {
+      const link = prompt('Enter the URL:');
+      if (link) {
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0);
+          const linkNode = document.createElement('a');
+          linkNode.href = link;
+          linkNode.textContent = selection.toString();
+          range.deleteContents();
+          range.insertNode(linkNode);
+        }
+      }
     } else {
-      document.execCommand("insertImage", false, link);
+      const image = prompt('Enter the image URL:');
+      if (image) {
+        const imgNode = document.createElement('img');
+        imgNode.src = image;
+        imgNode.alt = 'Image';
+        printDiv.current.appendChild(imgNode);
+      }
     }
-    setLink("");
   }
 
   const handlePrint = () => {
