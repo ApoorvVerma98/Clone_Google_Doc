@@ -1,26 +1,20 @@
 import { useState } from "react";
-import { AiFillPrinter, AiOutlineHighlight } from "react-icons/ai";
+import { AiOutlinePrinter , AiOutlineHighlight } from "react-icons/ai";
 import { BsLink } from "react-icons/bs";
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import {
-  icons,
-  fontSizeList,
-  fontFamilyList,
-  emojiList,
-  zoomList,
-} from "../component/Icons";
+import { icons, fontSizeList, fontFamilyList, emojiList, zoomList} from "../component/Icons";
 import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
 export default function ToolBar({ printDiv }) {
-  const [emoji, setEmoji] = useState("&#128514;");
-  const [scaleSize, setScaleSize] = useState("100%");
-  const [fontSize, setFontSize] = useState("Font Size");
-  const [fontName, setFontName] = useState("Font Style");
-  const [color, setColor] = useState("#000000");
-  const [higlightColor, setHiglightColor] = useState("#000000");
-  const [link, setLink] = useState("");
-  const [show, setShow] = useState(false);
+  const [ emoji, setEmoji ] = useState("&#128514;");
+  const [ scaleSize, setScaleSize]  = useState("100%");
+  const [ fontSize, setFontSize ] = useState("Font Size");
+  const [ fontName, setFontName ] = useState("Font Style");
+  const [ color, setColor ] = useState("#000000");
+  const [ higlightColor, setHiglightColor ] = useState("#000000");
+  const [ link, setLink ] = useState("");
+  const [ show, setShow ] = useState(false);
 
   function handleAction(element) {
     document.execCommand(`${element.action}`);
