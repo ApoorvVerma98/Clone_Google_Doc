@@ -1,16 +1,14 @@
 import React, { useState, useRef } from "react";
-import ToolBar from "../editorBar/EditorBar"
+import ToolBar from "../editorBar/EditorBar";
 import style from "./TextArea.module.css";
 import { HiDownload } from "react-icons/hi";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
-
 export default function HomePage() {
   const [title, setTitle] = useState("Untitled Document");
   const printDiv = useRef();
 
- 
   async function handleDownload() {
     const sheetContent = document.getElementById(`printablediv`);
     const canvas = await html2canvas(sheetContent, { dpi: 300 });
@@ -24,26 +22,24 @@ export default function HomePage() {
     pdfDoc.addImage(imageData, "PNG", 0, 0, 210, 297, "", "FAST");
     pdfDoc.save(`${title}.pdf`);
   }
-  
-  
 
   return (
     <div>
       <div className={style.main}>
-         <div className={style.ToolBar}>
-        <ToolBar printDiv={printDiv}/>
-        <div className={style.wrapper}>
-          <div
-            ref={printDiv}
-            id="printablediv"
-            className={style.textArea}
-            contentEditable="true"
-          />
-        </div>
+        <div className={style.ToolBar}>
+          <ToolBar printDiv={printDiv} />
+          <div className={style.wrapper}>
+            <div
+              ref={printDiv}
+              id="printablediv"
+              className={style.textArea}
+              contentEditable="true"
+            />
+          </div>
         </div>
       </div>
       <div onClick={handleDownload} className={style.downloaddoc}>
-        <HiDownload  />
+        <HiDownload />
       </div>
     </div>
   );

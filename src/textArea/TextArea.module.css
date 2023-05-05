@@ -4,7 +4,7 @@
 }
 
 .main {
-  background-color: #EDF2FA;
+  background-color: #edf2fa;
 }
 
 .wrapper {
@@ -13,9 +13,8 @@
   margin-top: 4rem;
 }
 
-
 .textArea {
-  border: 1px solid #EDF2FA;
+  border: 1px solid #edf2fa;
   box-shadow: 0px 0px 3px 3px rgb(182, 182, 182, 0.5);
   border-radius: 12px;
   width: 40%;
@@ -35,7 +34,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: linear-gradient(to right,#c2e7ff, #c2e7ff);
+  background: linear-gradient(to right, #c2e7ff, #c2e7ff);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,8 +44,8 @@
 
 .downloaddoc:hover {
   cursor: pointer;
-  background: linear-gradient(to right,#98baf0, #98baf0);
-  box-shadow: 0 0 20px #0086F9;
+  background: linear-gradient(to right, #98baf0, #98baf0);
+  box-shadow: 0 0 20px #0086f9;
 }
 .downloaddoc i {
   font-size: 2.5rem;
@@ -54,10 +53,10 @@
 }
 
 @keyframes pulse {
-    50% {
+  50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
   }
-} 
+}
