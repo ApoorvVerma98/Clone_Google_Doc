@@ -1,20 +1,20 @@
 import { useState } from "react";
-import { AiOutlinePrinter , AiOutlineHighlight } from "react-icons/ai";
+import { AiOutlinePrinter, AiOutlineHighlight } from "react-icons/ai";
 import { BsLink } from "react-icons/bs";
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import { icons, fontSizeList, fontFamilyList, emojiList, zoomList,heading} from "../component/Icons";
+import {icons,fontSizeList,fontFamilyList,emojiList,zoomList,heading,} from "../component/ToolBar-Icons";
 import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
 export default function ToolBar({ printDiv }) {
-  const [ emoji, setEmoji ] = useState("&#128514;");
-  const [ scaleSize, setScaleSize]  = useState("100%");
-  const [ fontSize, setFontSize ] = useState("Font Size");
-  const [ fontName, setFontName ] = useState("Font Style");
-  const [ color, setColor ] = useState("#000000");
-  const [ highlightColor, setHighlightColor ] = useState("#000000");
-  const [ link, setLink ] = useState("");
-  const [ show, setShow ] = useState(false);
+  const [emoji, setEmoji] = useState("&#128514;");
+  const [scaleSize, setScaleSize] = useState("100%");
+  const [fontSize, setFontSize] = useState("Font Size");
+  const [fontName, setFontName] = useState("Font Style");
+  const [color, setColor] = useState("#000000");
+  const [highlightColor, setHighlightColor] = useState("#000000");
+  const [link, setLink] = useState("");
+  const [show, setShow] = useState(false);
 
   function handleAction(element) {
     document.execCommand(`${element.action}`);
@@ -39,7 +39,6 @@ export default function ToolBar({ printDiv }) {
   }
   function handleEmoji(e) {
     setEmoji(e.target.value);
-  
 
     if (e.target.value === "Smile") {
       document.execCommand("insertHTML", false, "&#128514");
@@ -51,8 +50,8 @@ export default function ToolBar({ printDiv }) {
     console.log(e.target.value);
   }
   const handleText = (value) => {
-    document.execCommand("formatBlock", false,value);
-  }
+    document.execCommand("formatBlock", false, value);
+  };
 
   function handleScale(e) {
     setScaleSize(e.target.value);
@@ -98,7 +97,7 @@ export default function ToolBar({ printDiv }) {
             {element.icon}
           </button>
         ))}
-      
+
         <button onClick={handlePrint}>
           <AiOutlinePrinter />
         </button>
@@ -108,7 +107,6 @@ export default function ToolBar({ printDiv }) {
           </button>
         ))}
 
-        
         <div className={style.fontStyleBox}>
           <select
             style={{ width: "100%" }}
@@ -123,13 +121,13 @@ export default function ToolBar({ printDiv }) {
           </select>
         </div>
         <select onChange={(e) => handleText(e.target.value)}>
-            <option value="">Normal Text</option>
-            {heading.map((x, i) => (
-              <option value={x.value} key={i}>
-                {x.icon}
-              </option>
-            ))}
-            </select>
+          <option value="">Normal Text</option>
+          {heading.map((x, i) => (
+            <option value={x.value} key={i}>
+              {x.icon}
+            </option>
+          ))}
+        </select>
         <div className={style.fontStyleBox}>
           <select onChange={handleEmoji}>
             <option>Emoji</option>
@@ -187,7 +185,9 @@ export default function ToolBar({ printDiv }) {
 
         <button>
           <label htmlFor="highlightColor">
-            <AiOutlineHighlight style={{ zIndex: "1", color: highlightColor }} />
+            <AiOutlineHighlight
+              style={{ zIndex: "1", color: highlightColor }}
+            />
           </label>
           <input
             className={style.input}
@@ -231,4 +231,4 @@ export default function ToolBar({ printDiv }) {
       )}
     </div>
   );
-};
+}

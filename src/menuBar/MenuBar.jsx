@@ -6,7 +6,7 @@ import VideoChatIcon from '@mui/icons-material/VideoChat';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import Avatar from '@mui/material/Avatar';
 import Edit from '../component/MenuEditButton';
-
+import ViewButton from '../component/MenuViewButton';
 import { AiOutlineStar } from "react-icons/ai";
 import { MdDriveFileMoveOutline } from "react-icons/md";
 function MenuBar() {
@@ -42,7 +42,7 @@ function MenuBar() {
 <ul className={styles.list}> 
 <li className={styles.file}><File /></li>
 <li className={styles.file}><Edit/></li>
-
+<li className={styles.file}><ViewButton/></li>
 {
   nav.map((ele)=>{
   return (
