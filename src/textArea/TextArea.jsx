@@ -43,7 +43,7 @@ export default function HomePage() {
         </div>
         </div>
       </div>
-      <div onClick={handleDownload} className={style.download}>
+      <div onClick={handleDownload} className={style.downloaddoc}>
         <HiDownload />
       </div>
     </div>
