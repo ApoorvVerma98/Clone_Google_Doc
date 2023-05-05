@@ -1,0 +1,7 @@
+.main {
+  margin-top: 1.5rem;
+  cursor: pointer;
+}
+.main:hover {
+  background-color: rgb(240, 239, 239);
+}

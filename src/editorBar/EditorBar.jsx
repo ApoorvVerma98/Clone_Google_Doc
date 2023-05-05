@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiOutlinePrinter , AiOutlineHighlight } from "react-icons/ai";
 import { BsLink } from "react-icons/bs";
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import { icons, fontSizeList, fontFamilyList, emojiList, zoomList} from "../component/Icons";
+import { icons, fontSizeList, fontFamilyList, emojiList, zoomList,heading} from "../component/Icons";
 import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
@@ -39,6 +39,7 @@ export default function ToolBar({ printDiv }) {
   }
   function handleEmoji(e) {
     setEmoji(e.target.value);
+  
 
     if (e.target.value === "Smile") {
       document.execCommand("insertHTML", false, "&#128514");
@@ -48,6 +49,9 @@ export default function ToolBar({ printDiv }) {
       document.execCommand("insertHTML", false, "&#128078");
     }
     console.log(e.target.value);
+  }
+  const handleText = (value) => {
+    document.execCommand("formatBlock", false,value);
   }
 
   function handleScale(e) {
@@ -94,7 +98,7 @@ export default function ToolBar({ printDiv }) {
             {element.icon}
           </button>
         ))}
-
+      
         <button onClick={handlePrint}>
           <AiOutlinePrinter />
         </button>
@@ -103,6 +107,8 @@ export default function ToolBar({ printDiv }) {
             {element.icon}
           </button>
         ))}
+
+        
         <div className={style.fontStyleBox}>
           <select
             style={{ width: "100%" }}
@@ -116,6 +122,14 @@ export default function ToolBar({ printDiv }) {
             ))}
           </select>
         </div>
+        <select onChange={(e) => handleText(e.target.value)}>
+            <option value="">Normal Text</option>
+            {heading.map((x, i) => (
+              <option value={x.value} key={i}>
+                {x.icon}
+              </option>
+            ))}
+            </select>
         <div className={style.fontStyleBox}>
           <select onChange={handleEmoji}>
             <option>Emoji</option>
@@ -217,4 +231,4 @@ export default function ToolBar({ printDiv }) {
       )}
     </div>
   );
-}
+};

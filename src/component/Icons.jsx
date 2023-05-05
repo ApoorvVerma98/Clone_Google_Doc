@@ -94,7 +94,36 @@ export const icons = [
     icon: <FaRemoveFormat />,
     action: "removeFormat",
   },
+
 ];
+
+export const heading = [
+  {
+    icon : "Heading 1",
+    value : "H1",
+  } ,
+  {
+    icon : "Heading 2",
+    value : "H2",
+  } ,
+  {
+    icon : "Heading 3",
+    value : "H3",
+  } ,
+  {
+    icon : "Heading 4",
+    value : "H4",
+  } ,
+  {
+    icon : "Heading 5",
+    value : "H5",
+  } ,
+  {
+    icon : "Heading 6",
+    value : "H6",
+}
+];
+
 
 export const fontSizeList = [ 1, 2, 3, 4, 5, 6, 7, 8, 9 , 10 ];
 
@@ -137,3 +166,4 @@ export const emojiList = [
 ];
 
 export const zoomList = ["25%", "50%", "75%", "100%", "150%", "200%"];
+
