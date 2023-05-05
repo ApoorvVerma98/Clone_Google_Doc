@@ -30,8 +30,7 @@ export default function HomePage() {
   return (
     <div>
       <div className={style.main}>
-       
-         <div className={style.navbar}>
+         <div className={style.ToolBar}>
         <ToolBar printDiv={printDiv}/>
         <div className={style.wrapper}>
           <div
@@ -44,7 +43,7 @@ export default function HomePage() {
         </div>
       </div>
       <div onClick={handleDownload} className={style.downloaddoc}>
-        <HiDownload />
+        <HiDownload  />
       </div>
     </div>
   );
