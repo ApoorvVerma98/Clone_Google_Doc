@@ -1,30 +1,41 @@
 .list {
   display: flex;
-  margin-top: -2.4rem;
+  margin-top: -2.8rem;
   margin-left: 4.5rem;
   list-style-type: none;
   gap: 2rem;
-
+margin-bottom: 1rem;
   cursor: pointer;
   font-weight: 500;
+  border-radius: 30%;
+
+  
 }
 .docimg {
-  width: 2.7rem;
+  width: 3rem;
+  height: 45px;
   margin-top: 1.5rem;
   margin-left: 1%;
+  border-radius: 30%;
+  cursor: pointer;
+}
+.docimg:hover{
+background-color:  rgb(240, 239, 239);
 }
 .mainhead {
-  margin-top: -4%;
+  margin-top: -4.2%;
   margin-left: 5%;
   font-size: 1.5rem;
   width: 15%;
 }
-.mainimg {
-  margin-top: -3.6%;
-  font-size: 1.6rem;
-  margin-right: 54%;
+.lefticon{
+  display: flex;
+  margin-left: 18rem;
+  margin-top: -1.5rem;
+  gap: 2rem;
   cursor: pointer;
 }
+
 .star:hover {
   background-color: rgb(240, 239, 239);
 }
@@ -32,24 +43,16 @@
   background-color: rgb(240, 239, 239);
 }
 
-.drive {
-  margin-left: 3%;
-  margin-top: 4%;
-  border-radius: 50%;
-  width: 2rem;
-}
-.star {
-  margin-left: 46%;
-  border-radius: 50%;
-}
+
 
 .file {
   margin-top: -0.4rem;
   margin-left: -1rem;
   margin-right: -1rem;
   cursor: pointer;
-  height: 50%;
+  height: 40%;
   z-index: 2;
+  border-radius: 30%;
 }
 .lis:hover {
   background-color: rgb(240, 239, 239);
@@ -65,7 +68,8 @@
 .righticon {
   margin-left: 64rem;
   display: flex;
-  margin-top: -1.5rem;
+  
+  margin-bottom: -3.5rem;
   gap: 2rem;
 }
 .shares {
@@ -86,7 +90,7 @@
 }
 
 .user {
-  margin-left: 0.2rem;
+  margin-right: 0.8rem;
   margin-top: -0.8rem;
 }
 .message {
@@ -104,4 +108,10 @@
 
 .video:hover {
   background-color: rgb(240, 239, 239);
+}
+.lis{
+  border-radius: 40%;
+  height: 100%;
+  font-weight: 650;
+ 
 }
