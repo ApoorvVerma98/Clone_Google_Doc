@@ -12,9 +12,9 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ContentPasteIcon from "@mui/icons-material/ContentPaste";
 import ContentPasteOffIcon from "@mui/icons-material/ContentPasteOff";
 import SelectAllIcon from "@mui/icons-material/SelectAll";
-import styles from "./Edit.module.css";
+import styles from "./MenuEditButton.module.css";
 
-export default function Edit() {
+export default function MenuEditButton() {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
 

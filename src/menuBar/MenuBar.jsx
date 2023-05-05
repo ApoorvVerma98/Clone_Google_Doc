@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from'./MenuBar.module.css'
-import File from '../component/FileButton';
+import File from '../component/MenuFileButton';
 import MessageIcon from '@mui/icons-material/Message';
 import VideoChatIcon from '@mui/icons-material/VideoChat';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import Avatar from '@mui/material/Avatar';
-import Edit from '../component/Edit';
+import Edit from '../component/MenuEditButton';
 
 import { AiOutlineStar } from "react-icons/ai";
 import { MdDriveFileMoveOutline } from "react-icons/md";

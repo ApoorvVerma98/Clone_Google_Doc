@@ -21,8 +21,9 @@ import LanguageIcon from "@mui/icons-material/Language";
 import DescriptionIcon from "@mui/icons-material/Description";
 import PrintIcon from "@mui/icons-material/Print";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import styles from "./File.module.css";
-export default function File() {
+import styles from "./MenuFileButton.module.css";
+
+export default function MenuFileButton() {
   const [open, setOpen] = useState(false);
   const [scroll, setScroll] = useState("paper");
 
