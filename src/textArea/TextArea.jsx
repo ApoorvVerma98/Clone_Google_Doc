@@ -25,19 +25,18 @@ export default function HomePage() {
 
   return (
     <div>
-          <div className={style.ToolBar}>
-          <ToolBar printDiv={printDiv} />
-         
+      <div className={style.ToolBar}>
+        <ToolBar printDiv={printDiv} />
+       </div>
+       <div className={style.main}>
+        <div className={style.wrapper}>
+          <div
+            ref={printDiv}
+            id="printablediv"
+            className={style.textArea}
+            contentEditable="true"
+          />
         </div>
-      <div className={style.main}>
-      <div className={style.wrapper}>
-            <div
-              ref={printDiv}
-              id="printablediv"
-              className={style.textArea}
-              contentEditable="true"
-            />
-          </div>
       </div>
       <div onClick={handleDownload} className={style.downloaddoc}>
         <HiDownload />
