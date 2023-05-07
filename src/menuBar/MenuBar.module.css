@@ -4,7 +4,6 @@
   margin-left: 4.5rem;
   list-style-type: none;
   gap: 2rem;
-
   cursor: pointer;
   font-weight: 500;
 }
@@ -76,7 +75,6 @@
   display: flex;
   width: 10rem;
   height: 28%;
-
   border-radius: 40px;
   background-color: #c2e7ff;
   cursor: pointer;
@@ -86,7 +84,7 @@
 }
 
 .user {
-  margin-left: 0.2rem;
+  margin-left: 10rem;
   margin-top: -0.8rem;
 }
 .message {
