@@ -7,27 +7,33 @@
   cursor: pointer;
   font-weight: 500;
 }
+
 .docimg {
   width: 2.7rem;
   margin-top: 1.5rem;
   margin-left: 1%;
 }
+
 .mainhead {
   margin-top: -4%;
   margin-left: 5%;
   font-size: 1.5rem;
   width: 15%;
 }
+
 .mainimg {
   margin-top: -3.6%;
   font-size: 1.6rem;
   margin-right: 54%;
   cursor: pointer;
 }
-.star:hover {
-  background-color: rgb(240, 239, 239);
-}
-.drive:hover {
+
+.star:hover,
+.drive:hover,
+.lis:hover,
+.file:hover,
+.message:hover,
+.video:hover {
   background-color: rgb(240, 239, 239);
 }
 
@@ -37,6 +43,7 @@
   border-radius: 50%;
   width: 2rem;
 }
+
 .star {
   margin-left: 46%;
   border-radius: 50%;
@@ -50,16 +57,6 @@
   height: 50%;
   z-index: 2;
 }
-.lis:hover {
-  background-color: rgb(240, 239, 239);
-}
-.file:hover {
-  background-color: rgb(240, 239, 239);
-}
-/* .message{
-      margin-left: 70rem;
-      margin-top: -3rem;
-  } */
 
 .righticon {
   margin-left: 64rem;
@@ -67,6 +64,7 @@
   margin-top: -1.5rem;
   gap: 2rem;
 }
+
 .shares {
   font-size: 1.4rem;
   margin-top: -1rem;
@@ -78,7 +76,9 @@
   border-radius: 40px;
   background-color: #c2e7ff;
   cursor: pointer;
+  margin-left: 16px;
 }
+
 .shares:hover {
   background-color: rgb(126, 210, 217);
 }
@@ -87,19 +87,52 @@
   margin-left: 10rem;
   margin-top: -0.8rem;
 }
-.message {
-  font-size: 2.6rem;
-  margin-top: -0.6rem;
-  width: 2rem;
-}
-.message:hover {
-  background-color: rgb(240, 239, 239);
-}
+
+.message,
 .video {
   font-size: 2.6rem;
   margin-top: -0.6rem;
 }
 
-.video:hover {
+.message,
+.video {
   background-color: rgb(240, 239, 239);
+}
+
+@media (max-width: 768px) {
+  .list {
+    margin-left: 2rem;
+  }
+
+  .mainhead {
+    width: auto;
+    margin-left: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .mainimg {
+    font-size: 1.2rem;
+    margin-right: 2rem;
+  }
+
+  .righticon {
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  .shares {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 8rem;
+    height: 2rem;
+  }
+
+  .user {
+    margin-left: 5rem;
+  }
+
+  .message,
+  .video {
+    font-size: 1.8rem;
+  }
 }

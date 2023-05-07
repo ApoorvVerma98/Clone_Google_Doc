@@ -112,5 +112,53 @@ select:hover {
   font-size: 1.1rem;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .wrapper button {
+    height: 3.5vh;
+    font-size: 1rem;
+  }
+
+  .icon {
+    font-size: 1rem;
+  }
+
+  .fontSize {
+    height: 2.5vh;
+    font-size: 1rem;
+  }
+
+  .input {
+    height: 2.5vh;
+    width: 1.5rem;
+  }
+
+  .linkBox {
+    width: 90%;
+    max-width: 25rem;
+    height: auto;
+    margin: 1rem auto;
+  }
+
+  select {
+    font-size: 0.9rem;
+    height: 2.5vh;
+  }
+
+  .fontStyle {
+    font-size: 0.9rem;
+    height: 2.5vh;
+    width: 5rem;
+  }
+
+  .wrapper span {
+    font-size: 0.9rem;
+  }
 }
+
