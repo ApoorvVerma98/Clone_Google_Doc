@@ -4,7 +4,7 @@
 }
 
 .main {
-  background-color: #edf2fa;
+  background-color: #EDF2FA;
 }
 
 .wrapper {
@@ -14,7 +14,7 @@
 }
 
 .textArea {
-  border: 1px solid #edf2fa;
+  border: 1px solid  #edf2fa;;
   box-shadow: 0px 0px 3px 3px rgb(182, 182, 182, 0.5);
   border-radius: 12px;
   width: 40%;

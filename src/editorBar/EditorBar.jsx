@@ -2,7 +2,14 @@ import { useState } from "react";
 import { AiOutlinePrinter, AiOutlineHighlight } from "react-icons/ai";
 import { BsLink } from "react-icons/bs";
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import {icons,fontSizeList,fontFamilyList,emojiList,zoomList,heading,} from "../component/ToolBar-Icons";
+import {
+  icons,
+  fontSizeList,
+  fontFamilyList,
+  emojiList,
+  zoomList,
+  heading,
+} from "../component/ToolBar-Icons";
 import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
@@ -97,7 +104,6 @@ export default function ToolBar({ printDiv }) {
             {element.icon}
           </button>
         ))}
-
         <button onClick={handlePrint}>
           <AiOutlinePrinter />
         </button>
@@ -106,7 +112,6 @@ export default function ToolBar({ printDiv }) {
             {element.icon}
           </button>
         ))}
-
         <div className={style.fontStyleBox}>
           <select
             style={{ width: "100%" }}
@@ -136,7 +141,6 @@ export default function ToolBar({ printDiv }) {
             ))}
           </select>
         </div>
-
         <div className={style.fontStyleBox}>
           <select
             className={style.fontStyle}
@@ -149,7 +153,6 @@ export default function ToolBar({ printDiv }) {
             ))}
           </select>
         </div>
-
         <div className={style.fontSize}>
           <label htmlFor="fontSize">
             <span>
@@ -163,13 +166,11 @@ export default function ToolBar({ printDiv }) {
             ))}
           </select>
         </div>
-
         {icons.slice(5, 9).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
             {element.icon}
           </button>
         ))}
-
         <button>
           <label htmlFor="color">
             <ImTextColor style={{ color: color }} />
@@ -182,7 +183,6 @@ export default function ToolBar({ printDiv }) {
             onChange={handleFontColor}
           />
         </button>
-
         <button>
           <label htmlFor="highlightColor">
             <AiOutlineHighlight
@@ -197,7 +197,6 @@ export default function ToolBar({ printDiv }) {
             onChange={handleHighlightColor}
           />
         </button>
-
         <button onClick={() => handleOpen("link")}>
           <label htmlFor="link">
             <BsLink />
@@ -208,7 +207,6 @@ export default function ToolBar({ printDiv }) {
             <RxImage />
           </label>
         </button>
-
         {icons.slice(9).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
             {element.icon}
@@ -218,7 +216,6 @@ export default function ToolBar({ printDiv }) {
       {show ? (
         <div className={style.linkBox}>
           <h4>Paste your Link Here....</h4>
-
           <input
             id="link"
             value={link}

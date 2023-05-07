@@ -25,10 +25,12 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className={style.main}>
-        <div className={style.ToolBar}>
+          <div className={style.ToolBar}>
           <ToolBar printDiv={printDiv} />
-          <div className={style.wrapper}>
+         
+        </div>
+      <div className={style.main}>
+      <div className={style.wrapper}>
             <div
               ref={printDiv}
               id="printablediv"
@@ -36,7 +38,6 @@ export default function HomePage() {
               contentEditable="true"
             />
           </div>
-        </div>
       </div>
       <div onClick={handleDownload} className={style.downloaddoc}>
         <HiDownload />
