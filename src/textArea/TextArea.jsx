@@ -9,6 +9,8 @@ import { documentName } from "../menuBar/Atom";
 export default function HomePage() {
   const title = useRecoilValue(documentName);
   const [pdfName, setPdfName] = useState("");
+  const fileInputRef = useRef(null);
+
 
   const printDiv = useRef();
 
@@ -30,10 +32,24 @@ export default function HomePage() {
     setPdfName(event.target.value);
   }
 
+  function handleFileUpload(event) {
+    if (event.target.files[0]) {
+      let imgUrl = URL.createObjectURL(event.target.files[0]);
+      let img = document.createElement("img");
+      console.log(imgUrl);
+
+      img.style.maxWidth = "50%";
+      img.style.maxHeight = "50%";
+
+      img.src = imgUrl;
+      document.execCommand("insertHTML", false, img.outerHTML);
+}
+  }
+
   return (
     <div>
       <div className={style.ToolBar}>
-        <ToolBar printDiv={printDiv} />
+        <ToolBar fileInputRef = {fileInputRef} printDiv={printDiv} />        
       </div>
       <div className={style.main}>
         <div className={style.wrapper}>
@@ -42,6 +58,15 @@ export default function HomePage() {
             id="printablediv"
             className={style.textArea}
             contentEditable="true"
+          />
+             <input
+            ref={fileInputRef}
+            id="imageUpload"
+            hidden
+            type="file"
+            accept="image/*"
+            // style={{ display: "none" }}
+            onChange={handleFileUpload}
           />
         </div>
       </div>

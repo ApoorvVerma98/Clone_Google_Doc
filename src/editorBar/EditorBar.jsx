@@ -1,38 +1,40 @@
 import React, { useState, useRef } from "react";
 import { AiOutlinePrinter, AiOutlineHighlight } from "react-icons/ai";
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import { icons, fontSizeList, fontFamilyList, zoomList, heading } from "../component/ToolBar-Icons";
+import { icons, fontSizeList, fontFamilyList,  zoomList, heading } from "../component/ToolBar-Icons";
 import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
-export default function ToolBar({ printDiv }) {
+export default function ToolBar(props) {
+  const printDiv = props.printDiv;
+  const fileInputRef = props.fileInputRef;
   const [scaleSize, setScaleSize] = useState("100%");
   const [fontSize, setFontSize] = useState("Font Size");
   const [fontName, setFontName] = useState("Font Style");
   const [color, setColor] = useState("#000000");
   const [highlightColor, setHighlightColor] = useState("#000000");
-  const [show, setShow] = useState(false);
-  const fileInputRef = useRef(null);
+  // const [show, setShow] = useState(false);
+  // const fileInputRef = useRef(null);
 
   function handleAction(element) {
     document.execCommand(`${element.action}`);
   }
-
+  
   function handleFontColor(e) {
     setColor(e.target.value);
     document.execCommand("foreColor", false, e.target.value);
   }
-
+  
   function handleFontSize(e) {
     setFontSize(e.target.value);
     document.execCommand("fontSize", false, e.target.value);
   }
-
+  
   function handleHighlightColor(e) {
     setHighlightColor(e.target.value);
     document.execCommand("backColor", false, e.target.value);
   }
-
+  
   function handleFontStyle(e) {
     setFontName(e.target.value);
     document.execCommand("fontName", false, e.target.value);
@@ -45,7 +47,7 @@ export default function ToolBar({ printDiv }) {
       document.execCommand("insertHTML", false, "&#128078");
     }
   }
-
+  
   const handleText = (value) => {
     document.execCommand("formatBlock", false, value);
   };
@@ -75,19 +77,23 @@ export default function ToolBar({ printDiv }) {
     document.body.innerHTML = originalContents;
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+  function handleImage(){
+    fileInputRef.current.click();
+  }
 
-    reader.onloadend = () => {
-      const imageUrl = reader.result;
-      document.execCommand("insertImage", false, imageUrl);
-    };
+//   function handleFileUpload(event) {
+//     if (event.target.files[0]) {
+//       let imgUrl = URL.createObjectURL(event.target.files[0]);
+//       let img = document.createElement("img");
+//       console.log(imgUrl);
 
-    if (file) {
-      reader.readAsDataURL(file);
-    }
-  };
+//       img.style.maxWidth = "50%";
+//       img.style.maxHeight = "50%";
+
+//       img.src = imgUrl;
+//       document.execCommand("insertHTML", false, img.outerHTML);
+// }
+//   }
 
   return (
     <div>
@@ -169,6 +175,12 @@ export default function ToolBar({ printDiv }) {
             onChange={handleFontColor}
           />
         </button>
+        <div>
+         <button style={{border: "1px solid"}}  onClick={handleImage} htmlFor="imageUpload">
+            <RxImage  />
+           </button>
+           
+        </div>
         <button>
           <label htmlFor="highlightColor">
             <AiOutlineHighlight
@@ -182,25 +194,14 @@ export default function ToolBar({ printDiv }) {
             value={highlightColor}
             onChange={handleHighlightColor}
           />
+          
         </button>
-        <div>
-          <label htmlFor="imageUpload">
-            <RxImage />
-          </label>
-          <input
-            ref={fileInputRef}
-            id="imageUpload"
-            type="file"
-            accept="image/*"
-            style={{ display: "none" }}
-            onChange={handleFileUpload}
-          />
-        </div>
         {icons.slice(9).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
             {element.icon}
           </button>
         ))}
+       
       </div>
     </div>
   );

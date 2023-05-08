@@ -131,6 +131,10 @@ export const heading = [
 
 export const fontSizeList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
+export const headingList = ["H1", "H2", "H3", "H4", "H5", "H6"];
+
+export const zoomList = ["25%", "50%", "75%", "100%", "150%", "200%"];
+
 export const fontFamilyList = [
   "serif",
   "sans-serif",
@@ -148,25 +152,3 @@ export const fontFamilyList = [
   "Raleway",
 ];
 
-export const headingList = ["H1", "H2", "H3", "H4", "H5", "H6"];
-
-export const emojiList = [
-  {
-    icon: "Smile",
-    value: "&#128514",
-  },
-  {
-    icon: "Thumb-Up",
-    value: "&#128514",
-  },
-  {
-    icon: "Thumb-Down",
-    value: "&#128514",
-  },
-  {
-    icon: "Kiss",
-    value: "&#128536",
-  },
-];
-
-export const zoomList = ["25%", "50%", "75%", "100%", "150%", "200%"];
