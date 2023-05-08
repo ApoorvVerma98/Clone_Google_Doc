@@ -1,26 +1,31 @@
 import React from "react";
+import { useState } from "react";
 import styles from "./MenuBar.module.css";
 import File from "../component/MenuFileButton";
 import MessageIcon from "@mui/icons-material/Message";
+import { Tooltip } from '@mui/material'
 import VideoChatIcon from "@mui/icons-material/VideoChat";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import Avatar from "@mui/material/Avatar";
 import Edit from "../component/MenuEditButton";
 import ViewButton from "../component/MenuViewButton";
-import { AiOutlineStar } from "react-icons/ai";
-import { MdDriveFileMoveOutline } from "react-icons/md";
+import StarIcon from '@mui/icons-material/Star';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import DriveFileMoveOutlinedIcon from '@mui/icons-material/DriveFileMoveOutlined';
+import CloudDoneOutlinedIcon from '@mui/icons-material/CloudDoneOutlined';
 
 function MenuBar() {
+  const [starr, setStarr] = useState(false)
   const nav = [
-    { id: 3, name: "Insert" },
-    { id: 4, name: "Format" },
-    { id: 5, name: "Tools" },
-    { id: 6, name: "Extensions" },
-    { id: 7, name: "Help" },
+    { id: 1, name: "INSERT" },
+    { id: 2, name: "FORMAT" },
+    { id: 3, name: "TOOLS" },
+    { id: 4, name: "EXTENSIONS" },
+    { id: 5, name: "HELP" },
   ];
   return (
     <div>
-      <div className={styles.maincontainer}>
+ 
         <img
           className={styles.docimg}
           src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png"
@@ -29,12 +34,26 @@ function MenuBar() {
         <p contentEditable className={styles.mainhead}>
           Untitled document
         </p>
-        <div className={styles.mainimg}>
-          <AiOutlineStar className={styles.star} />
-          <MdDriveFileMoveOutline className={styles.drive} />
+        <div className={styles.lefticon}>
+        <Tooltip title="Star">
+        <p onClick={() => setStarr(!starr)}>
+         {starr ? <StarIcon sx={{ fontSize: "1.5rem", color: '#4285F4' }} /> : <StarOutlineIcon sx={{ fontSize: "1.5rem" }} />}
+         </p>
+        </Tooltip>
+        <Tooltip title="Move">
+        <p><DriveFileMoveOutlinedIcon sx={{ fontSize: "1.5rem" }} /></p>
+          </Tooltip>
+          <Tooltip title="See document status">
+          <p><CloudDoneOutlinedIcon sx={{ fontSize: "1.5rem" }} /></p>
+          </Tooltip>
+          </div>
           <div className={styles.righticon}>
+          <Tooltip title="Open comment history (ctrl+Alt+Shift+A)">
             <MessageIcon className={styles.message} />
-            <VideoChatIcon className={styles.video} />
+            </Tooltip>
+            <Tooltip title="Join a call here or present this tab to the call">
+            <a href="https://meet.google.com/">   <VideoChatIcon className={styles.video}  /></a>
+            </Tooltip>
             <div className={styles.shares}>
               {" "}
               <LockOpenIcon className={styles.lock} />{" "}
@@ -45,8 +64,8 @@ function MenuBar() {
               alt="Remy Sharp"
               src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg"
             />
-          </div>
-        </div>
+         
+  
       </div>
       <ul className={styles.list}>
         <li className={styles.file}>
@@ -61,9 +80,9 @@ function MenuBar() {
         {nav.map((ele) => {
           return (
             <>
-              <li className={styles.lis} key={ele.id}>
+              <button className={styles.lis} key={ele.id}>
                 {ele.name}
-              </li>
+              </button>
             </>
           );
         })}

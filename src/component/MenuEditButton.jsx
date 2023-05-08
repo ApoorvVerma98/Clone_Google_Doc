@@ -32,7 +32,7 @@ export default function MenuEditButton() {
   return (
     <div>
       <Button
-        style={{ color: "black", fontWeight: 600 }}
+        style={{ color: "black"  }}
         onClick={handleClickOpen("paper")}
       >
         Edit
