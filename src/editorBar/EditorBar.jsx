@@ -1,51 +1,41 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AiOutlinePrinter, AiOutlineHighlight } from "react-icons/ai";
-import { BsLink } from "react-icons/bs";
 import { ImFontSize, ImTextColor } from "react-icons/im";
-import {
-  icons,
-  fontSizeList,
-  fontFamilyList,
-  emojiList,
-  zoomList,
-  heading,
-} from "../component/ToolBar-Icons";
+import { icons, fontSizeList, fontFamilyList, zoomList, heading } from "../component/ToolBar-Icons";
 import style from "./EditorBar.module.css";
 import { RxImage } from "react-icons/rx";
 
 export default function ToolBar({ printDiv }) {
-  const [emoji, setEmoji] = useState("&#128514;");
   const [scaleSize, setScaleSize] = useState("100%");
   const [fontSize, setFontSize] = useState("Font Size");
   const [fontName, setFontName] = useState("Font Style");
   const [color, setColor] = useState("#000000");
   const [highlightColor, setHighlightColor] = useState("#000000");
-  const [link, setLink] = useState("");
   const [show, setShow] = useState(false);
+  const fileInputRef = useRef(null);
 
   function handleAction(element) {
     document.execCommand(`${element.action}`);
   }
+
   function handleFontColor(e) {
     setColor(e.target.value);
-    console.log(e.target.value);
     document.execCommand("foreColor", false, e.target.value);
   }
+
   function handleFontSize(e) {
     setFontSize(e.target.value);
     document.execCommand("fontSize", false, e.target.value);
   }
+
   function handleHighlightColor(e) {
     setHighlightColor(e.target.value);
     document.execCommand("backColor", false, e.target.value);
   }
+
   function handleFontStyle(e) {
     setFontName(e.target.value);
     document.execCommand("fontName", false, e.target.value);
-    console.log(e.target.value);
-  }
-  function handleEmoji(e) {
-    setEmoji(e.target.value);
 
     if (e.target.value === "Smile") {
       document.execCommand("insertHTML", false, "&#128514");
@@ -54,8 +44,8 @@ export default function ToolBar({ printDiv }) {
     } else if (e.target.value === "Thumbs Down") {
       document.execCommand("insertHTML", false, "&#128078");
     }
-    console.log(e.target.value);
   }
+
   const handleText = (value) => {
     document.execCommand("formatBlock", false, value);
   };
@@ -77,23 +67,26 @@ export default function ToolBar({ printDiv }) {
     }
   }
 
-  function handleOpen(value) {
-    setShow(!show ? true : false);
-    if (value === "link") {
-      document.execCommand("createLink", false, link);
-    } else {
-      document.execCommand("insertImage", false, link);
-    }
-    setLink("");
-  }
-
   const handlePrint = () => {
     let printContents = printDiv.current.innerHTML;
-    console.log(printContents);
     let originalContents = document.body.innerHTML;
     document.body.innerHTML = printContents;
     window.print();
     document.body.innerHTML = originalContents;
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const imageUrl = reader.result;
+      document.execCommand("insertImage", false, imageUrl);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -133,14 +126,7 @@ export default function ToolBar({ printDiv }) {
             </option>
           ))}
         </select>
-        <div className={style.fontStyleBox}>
-          <select onChange={handleEmoji}>
-            <option>Emoji</option>
-            {emojiList.map((x, i) => (
-              <option key={i}>{x.icon}</option>
-            ))}
-          </select>
-        </div>
+        <div className={style.fontStyleBox}></div>
         <div className={style.fontStyleBox}>
           <select
             className={style.fontStyle}
@@ -197,35 +183,25 @@ export default function ToolBar({ printDiv }) {
             onChange={handleHighlightColor}
           />
         </button>
-        <button onClick={() => handleOpen("link")}>
-          <label htmlFor="link">
-            <BsLink />
-          </label>
-        </button>
-        <button onClick={() => handleOpen("insertImage")}>
-          <label htmlFor="link">
+        <div>
+          <label htmlFor="imageUpload">
             <RxImage />
           </label>
-        </button>
+          <input
+            ref={fileInputRef}
+            id="imageUpload"
+            type="file"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={handleFileUpload}
+          />
+        </div>
         {icons.slice(9).map((element, index) => (
           <button key={index} onClick={() => handleAction(element)}>
             {element.icon}
           </button>
         ))}
       </div>
-      {show ? (
-        <div className={style.linkBox}>
-          <h4>Paste your Link Here....</h4>
-          <input
-            id="link"
-            value={link}
-            type="url"
-            onChange={(e) => setLink(e.target.value)}
-          />
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 }
