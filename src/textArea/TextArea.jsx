@@ -4,9 +4,12 @@ import style from "./TextArea.module.css";
 import { HiDownload } from "react-icons/hi";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-
+import { useRecoilValue } from "recoil";
+import { documentName } from "../menuBar/Atom";
 export default function HomePage() {
-  const [title, setTitle] = useState("Untitled Document");
+  const title = useRecoilValue(documentName);
+  const [pdfName, setPdfName] = useState("");
+
   const printDiv = useRef();
 
   async function handleDownload() {
@@ -20,15 +23,19 @@ export default function HomePage() {
       compress: false,
     });
     pdfDoc.addImage(imageData, "PNG", 0, 0, 210, 297, "", "FAST");
-    pdfDoc.save(`${title}.pdf`);
+    pdfDoc.save(`${pdfName || title}.pdf`);
+  }
+
+  function handleInputChange(event) {
+    setPdfName(event.target.value);
   }
 
   return (
     <div>
       <div className={style.ToolBar}>
         <ToolBar printDiv={printDiv} />
-       </div>
-       <div className={style.main}>
+      </div>
+      <div className={style.main}>
         <div className={style.wrapper}>
           <div
             ref={printDiv}
@@ -38,8 +45,8 @@ export default function HomePage() {
           />
         </div>
       </div>
-      <div onClick={handleDownload} className={style.downloaddoc}>
-        <HiDownload />
+      <div className={style.downloaddoc}>
+        <HiDownload onClick={handleDownload} />
       </div>
     </div>
   );

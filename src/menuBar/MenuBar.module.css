@@ -28,6 +28,14 @@ background-color:  rgb(240, 239, 239);
   font-size: 1.5rem;
   width: 15%;
 }
+.mainhead input {
+  border: none;
+  font-size: 1.2rem;
+  width: 11rem;
+  padding: 2px;
+  margin-left: 0.3rem;
+  background-color: transparent;
+}
 .lefticon{
   display: flex;
   margin-left: 18rem;
@@ -68,7 +76,7 @@ background-color:  rgb(240, 239, 239);
   } */
 
 .righticon {
-  margin-left: 64rem;
+  margin-left: 70rem;
   display: flex;
   
   margin-bottom: -3.5rem;
@@ -97,7 +105,7 @@ background-color:  rgb(240, 239, 239);
 }
 .message {
   font-size: 2.6rem;
-  margin-top: -0.6rem;
+  margin-top: -0.5rem;
   width: 2rem;
 }
 .message:hover {
