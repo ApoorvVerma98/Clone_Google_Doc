@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import ArticleIcon from "@mui/icons-material/Article";
@@ -36,7 +36,7 @@ export default function MenuFileButton() {
     setOpen(false);
   };
 
-  const descriptionElementRef = useRef(null);
+ 
 
   return (
     <div>
@@ -51,16 +51,10 @@ export default function MenuFileButton() {
         open={open}
         onClose={handleClose}
         scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
         sx={{ width: "40%", marginTop: "3rem", height: "100%" }}
       >
         <DialogContent dividers={scroll === "paper"}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
+          <DialogContentText>
             <p className={styles.main}>
               {" "}
               <ArticleIcon style={{ marginBottom: "-5px" }} />

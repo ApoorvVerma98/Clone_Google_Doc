@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState} from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -23,7 +23,7 @@ export default function ViewButton() {
     setOpen(false);
   };
 
-  const descriptionElementRef = useRef(null);
+  
 
   return (
     <div>
@@ -38,8 +38,7 @@ export default function ViewButton() {
         open={open}
         onClose={handleClose}
         scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
+    
         sx={{
           width: "35%",
           marginTop: "1rem",
@@ -48,11 +47,7 @@ export default function ViewButton() {
         }}
       >
         <DialogContent dividers={scroll === "paper"}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
+          <DialogContentText >
             <p className={styles.main}>
               {" "}
               <ModeIcon style={{ marginBottom: "-5px", fontSize: "2rem" }} />

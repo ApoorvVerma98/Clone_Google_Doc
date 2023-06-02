@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -27,7 +27,7 @@ export default function MenuEditButton() {
     setOpen(false);
   };
 
-  const descriptionElementRef = useRef(null);
+ 
 
   return (
     <div>
@@ -42,8 +42,6 @@ export default function MenuEditButton() {
         open={open}
         onClose={handleClose}
         scroll={scroll}
-        aria-labelledby="scroll-dialog-title"
-        aria-describedby="scroll-dialog-description"
         sx={{
           width: "34%",
           marginTop: "2rem",
@@ -52,11 +50,7 @@ export default function MenuEditButton() {
         }}
       >
         <DialogContent dividers={scroll === "paper"}>
-          <DialogContentText
-            id="scroll-dialog-description"
-            ref={descriptionElementRef}
-            tabIndex={-1}
-          >
+          <DialogContentText>
             <p className={styles.main}>
               {" "}
               <BiUndo style={{ marginBottom: "-5px", fontSize: "2rem" }} />
