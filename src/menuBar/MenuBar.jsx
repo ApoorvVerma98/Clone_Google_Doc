@@ -12,10 +12,12 @@ import ViewButton from "../component/MenuViewButton";
 import StarIcon from '@mui/icons-material/Star';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import DriveFileMoveOutlinedIcon from '@mui/icons-material/DriveFileMoveOutlined';
-import CloudDoneOutlinedIcon from '@mui/icons-material/CloudDoneOutlined';
-
+import CloudDoneOutlinedIcon from '@mui/icons-material/CloudDoneOutlined'
+import { documentName } from "./Atom";
+import { useRecoilState } from "recoil";
 function MenuBar() {
   const [starr, setStarr] = useState(false)
+  const[docName,setDocName]=useRecoilState(documentName)
   const nav = [
     { id: 1, name: "INSERT" },
     { id: 2, name: "FORMAT" },
@@ -31,8 +33,9 @@ function MenuBar() {
           src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png"
           alt="dummy img"
         />
-        <p contentEditable className={styles.mainhead}>
-          Untitled document
+        <p className={styles.mainhead}>
+        <input type="text" value={docName}
+                            onChange={(e) => setDocName(e.target.value)} />
         </p>
         <div className={styles.lefticon}>
         <Tooltip title="Star">
@@ -52,7 +55,7 @@ function MenuBar() {
             <MessageIcon className={styles.message} />
             </Tooltip>
             <Tooltip title="Join a call here or present this tab to the call">
-            <a href="https://meet.google.com/">   <VideoChatIcon className={styles.video}  /></a>
+            <a href="https://meet.google.com/">   <VideoChatIcon className={styles.video} style={{fontSize:"1.7rem" ,color:"black"}} /></a>
             </Tooltip>
             <div className={styles.shares}>
               {" "}
